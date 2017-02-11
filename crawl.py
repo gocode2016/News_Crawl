@@ -37,7 +37,8 @@ class Crawl(object):
             for data in datas:
                 News += datas[data]+'\n'
         #print News
-        iMessage.send_Message(News, 'CQUT_News')
+        if News != '':
+            iMessage.send_Message(News, 'CQUT_News')
 
 if __name__=="__main__":
     root_urls = ["http://cs.cqut.edu.cn/Notice/NoticeStudentMore.aspx", "http://cs.cqut.edu.cn/Notice/NoticeMore.aspx?NtcCategoryID=5", "http://cs.cqut.edu.cn/News/NewsMore.aspx", "http://cs.cqut.edu.cn/Notice/NoticeEmpMore.aspx"]

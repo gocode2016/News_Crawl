@@ -20,8 +20,8 @@ class HtmlParser(object):
             #print link.get_text()
             new_url = link['href']
             new_full_url = urlparse.urljoin(page_url, new_url)
-            #if link.get_text() == datetime.datetime.now().strftime("%m/%d"):
-            if link.get_text() == '12/02':
+            if link.get_text() == datetime.datetime.now().strftime("%m/%d"):
+            #if link.get_text() == '12/02':
                 new_urls.add(new_full_url)
         return new_urls
 
