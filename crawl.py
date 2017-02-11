@@ -1,6 +1,7 @@
 # coding:utf-8
 import url_manager, html_downloader, html_parser, html_outputer
 import traceback
+import iMessage
 
 class Crawl(object):
     def __init__(self):
@@ -24,13 +25,19 @@ class Crawl(object):
                     count = count + 1
                 except Exception,e:
                     print 'craw failed!'
-                    print 'str(Exception):\t', str(Exception)
-                    print 'str(e):\t\t', str(e)
-                    print 'repr(e):\t', repr(e)
-                    print 'e.message:\t', e.message
-                    print 'traceback.print_exc():'; traceback.print_exc()
-                    print 'traceback.format_exc():\n%s' % traceback.format_exc()
-        self.outputer.output_html()
+                    #print 'str(Exception):\t', str(Exception)
+                    #print 'str(e):\t\t', str(e)
+                    #print 'repr(e):\t', repr(e)
+                    #print 'e.message:\t', e.message
+                    #print 'traceback.print_exc():'; traceback.print_exc()
+                    #print 'traceback.format_exc():\n%s' % traceback.format_exc()
+        datass = self.outputer.output_html()
+        News = ''
+        for datas in datass:
+            for data in datas:
+                News += datas[data]+'\n'
+        #print News
+        iMessage.send_Message(News, 'CQUT_News')
 
 if __name__=="__main__":
     root_urls = ["http://cs.cqut.edu.cn/Notice/NoticeStudentMore.aspx", "http://cs.cqut.edu.cn/Notice/NoticeMore.aspx?NtcCategoryID=5", "http://cs.cqut.edu.cn/News/NewsMore.aspx", "http://cs.cqut.edu.cn/Notice/NoticeEmpMore.aspx"]
